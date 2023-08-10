@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>QRCode Generation System</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+	.navbar{
+		background-color:palegoldenrod;
+	}
+</style>
+<body>
+		<!-- Create Navigation Bar -->
+		<nav class = navbar navbar-inverse navbar-fixed-top>
+			<div class="container">
+				<div class="navbar-header">
+					<h2 align="center"> QRCode Generation Details </h2>
+				</div>
+			</div>
+		</nav>
+		
+		<!-- Create Registration Form to generate QRCode  -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div th:if = "${param.success}">
+						<div class="alert alert-info">
+							QR Generation is successful. please check at this location:"D:\QRCode\".
+						</div>
+					</div>
+					<h1 align="center">QRCode Details</h1>
+					<br><br>
+					<form th:action="@{/generate}" method="POST" th:object="${generate}">
+						
+						<!-- First Name -->
+						<div class="form-group">
+							<label class="control-label" for="firstName">FirstName:</label>
+							<input id="firstName" class="form-control" th:field="*{firstName}" required autofocus = "autofocus"/>
+						</div>
+						
+						<!-- Last Name -->
+						<div class="form-group">
+							<label class="control-label" for="lastName">LastName:</label>
+							<input id="lastName" class="form-control" th:field="*{lastName}" required autofocus = "autofocus"/>
+						</div>
+						
+						<!-- Mobile Number -->
+						<div class="form-group">
+							<label class="control-label" for="mobileNo">Mobile No:</label>
+							<input id="mobileNo" class="form-control" th:field="*{mobileNo}" required autofocus = "autofocus"/>
+						</div>
+						
+						<!-- Email Address -->
+						<div class="form-group">
+							<label class="control-label" for="email">Email_Id:</label>
+							<input id="email" class="form-control" th:field="*{email}" required autofocus = "autofocus"/>
+						</div>
+						
+						<!-- Addresss -->
+						<div class="form-group">
+							<label class="control-label" for="address">Address:</label>
+							<input id="address" class="form-control" th:field="*{address}" required autofocus = "autofocus"/>
+						</div>
+						
+						<!-- Button for Generate QRCode -->
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary"> Generate QRCode </button>
+						</div>
+						
+					</form>
+				</div>	
+			</div>
+		</div>
+</body>
+</html>
